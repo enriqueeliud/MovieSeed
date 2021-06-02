@@ -1,0 +1,2 @@
+# MovieSeed
+mern stack application
