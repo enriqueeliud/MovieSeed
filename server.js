@@ -24,7 +24,7 @@ app.use('/users', UserRoutes);
 app.use('/blog', BlogRoutes);
 
 // Step 1:
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use("/", express.static(path.join(__dirname, "/client/build")));
 // Step 2:
 
 db.mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
