@@ -1,7 +1,7 @@
 const express = require ("express");
 const router = express.Router();
 const path = require ("path");
-const port = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3002;
 const db = require("./models/index");
 const Role = db.role;
 const cors = require('cors');
@@ -47,4 +47,4 @@ app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
-app.listen(port);
+app.listen("port",PORT);
