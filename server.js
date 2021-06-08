@@ -26,11 +26,8 @@ app.use('/blog', BlogRoutes);
 // Step 1:
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 // Step 2:
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-});
 
-db.mongoose.connect(process.env.DB, { useNewUrlParser: true })
+db.mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
    
@@ -44,5 +41,10 @@ db.mongoose.connect(process.env.DB, { useNewUrlParser: true })
 app.get('/may', (req,res)=>{
 	res.render('index');
 })
+
+
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 app.listen(port);
