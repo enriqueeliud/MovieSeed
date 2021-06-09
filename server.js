@@ -23,12 +23,7 @@ app.use('/users', UserRoutes);
 app.use('/blog', BlogRoutes);
 
 //db connection
-db.mongoose
-  .connect(
-    process.env.MONGODB_URI,
-    { useNewUrlParser: true },
-    { useUnifiedTopology: true }
-  )
+db.mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true },{ useUnifiedTopology: true })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
   })
@@ -43,13 +38,11 @@ app.get('/may', (req,res)=>{
 })
 
 // for deployment
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('../client/build')); // serve the static react app
-  app.get(/^\/(?!api).*/, (req, res) => { // don't serve api routes to react app
-    res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
+if(process.env.NODE_ENV === 'production'){
+  app.use('/', express.static("../client/build"));
+  app.get("*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "../client/build/index.html"));
   });
-  console.log('Serving React App...');
-};
-
+}
 
 app.listen(PORT);
