@@ -23,7 +23,12 @@ app.use('/users', UserRoutes);
 app.use('/blog', BlogRoutes);
 
 //db connection
-db.mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+db.mongoose
+  .connect(
+    process.env.MONGODB_URI,
+    { useNewUrlParser: true },
+    { useUnifiedTopology: true }
+  )
   .then(() => {
     console.log("Successfully connect to MongoDB.");
   })
