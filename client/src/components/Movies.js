@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 
 function Movies(props) {
 
- const url = "http://www.omdbapi.com/?s=friends&apikey=6496123e"
+ const url = "https://www.omdbapi.com/?s=friends&apikey=6496123e"
 
  const [movies, setMovies] = useState([])
 
