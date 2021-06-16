@@ -11,9 +11,9 @@ import {
 } from "@material-ui/core";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import './App.css';
-import Users from './components/Users.js'
-import Github from './components/Github.js'
-import Movies from './components/Movies.js'
+import Users from './components/Users.js';
+import Github from './components/Github.js';
+import MoviesList from './components/MoviesList.js';
 import Navbar from "./components/Navbar.js";
 import Series from './components/Series.js';
 import Footer from './components/Footer.js';
@@ -34,21 +34,9 @@ function App() {
               <Link
                 to="/movies"
                 className="nav-link dropdown-toggle"
-                data-toggle="dropdown"
               >
                 Movies
-              </Link>
-              <div className="dropdown-menu">
-                <a className="dropdown-item" href="#">
-                  Animations
-                </a>
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-                <a className="dropdown-item" href="#">
-                  Thriller
-                </a>
-              </div>
+              </Link>            
             </li>
             <li className="nav-item dropdown">
               <Link
@@ -118,7 +106,7 @@ function App() {
           <Github />
         </Route>
         <Route path="/movies">
-          <Movies />
+          <MoviesList />
         </Route>
         <Route path="/series">
           <Series />

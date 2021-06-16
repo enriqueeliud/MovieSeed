@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "client/build")));
 //to routes
 app.use('/users', UserRoutes);
-app.use('/blog', BlogRoutes);
+app.use('/api/blogs', BlogRoutes);
 
 //db connection
 db.mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true },{ useUnifiedTopology: true })

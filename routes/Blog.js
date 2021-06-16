@@ -2,16 +2,13 @@ const express = require('express');
 const router = express.Router();
 const Blog = require('../models/Blog');
 
-router.get("/blog", (req, res) => {
-  Blog.find()
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      res
-        .status(500)
-        .json({ success: false, msg: `Something went wrong. ${err}` });
-    });
+router.get("/getallblogs", async(req, res) => {
+ try  {
+    const blogs = await Blog.find({})
+    res.send(blogs)
+ } catch (error) {
+   return res.status(400).json({message:error})
+ }
 });
 
 router.post("/create", (req, res) => {
